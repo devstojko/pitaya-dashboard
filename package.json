@@ -11,13 +11,16 @@
     "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
+    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-plugin-root-import": "^5.1.0",
+    "cross-env": "^5.0.1",
     "react-scripts": "1.0.10"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
+    "start": "cross-env NODE_PATH=./src npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
