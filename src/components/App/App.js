@@ -6,19 +6,29 @@ import Sidebar from '../Sidebar/Sidebar';
 import MainPanel from '../MainPanel/MainPanel';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-
-
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      logged: false
+    }
+  }
+
+  handleChange = () => {
+    this.setState({ logged: !this.state.logged });
+    // this.props.onBurgerClick(isActive);
+  }
+
   render() {
     return (
       <div className="AppWrapper">
         <MuiThemeProvider>
-          <Sidebar />
+          <Sidebar isActive={this.state.logged}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
-          <MainPanel />
+          <MainPanel triggerParentUpdate={this.handleChange} isActive={this.state.logged}/>
         </MuiThemeProvider>
       </div>
     );

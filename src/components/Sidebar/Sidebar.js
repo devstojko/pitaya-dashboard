@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Sidebar.css';
 
 import TextField from 'material-ui/TextField';
@@ -25,9 +25,10 @@ const NavList = {
   marginTop: "20px"
 }
 
-const Sidebar = (props) => {
+class Sidebar extends Component {
+  render() {
     return (
-      <div className="Sidebar">
+      <div className={!this.props.isActive ? "Sidebar" : "Sidebar Sidebar--active"}>
         <div className="Sidebar__logo">
           <h1>Some Logo</h1>
         </div>
@@ -69,5 +70,6 @@ const Sidebar = (props) => {
       </div>
     );
   }
+}
 
 export default Sidebar;

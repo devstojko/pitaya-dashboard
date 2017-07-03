@@ -2,8 +2,8 @@
   position: fixed;
   z-index: 1032;
   top: 0;
-  right: 0;
-  left: auto;
+  right: auto;
+  left: 0;
 
   display: block;
   visibility: visible;
@@ -14,10 +14,12 @@
   padding-right: 0;
   padding-left: 0;
 
+  transition: .3s cubic-bezier(.685, .0473, .346, 1);
+  transform: translate3d(-260px, 0, 0);
   text-align: left;
 
   border-top: 0;
-
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, .42), 0 4px 25px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
   &__wrapper {
     position: relative;
 
@@ -26,5 +28,9 @@
     box-sizing: border-box;
     height: calc(100vh - 80px);
     padding-bottom: 30px;
+  }
+
+  &--active {
+    transform: none;
   }
 }
