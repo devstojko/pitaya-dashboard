@@ -2,39 +2,53 @@ import React, { Component } from 'react';
 import './MainPanel.css';
 
 import AppBar from 'material-ui/AppBar';
-import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import IconButton from 'material-ui/IconButton';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import FlatButton from 'material-ui/FlatButton';
-import ContentWarning from 'material-ui/svg-icons/alert/warning';
+import Card from '../Card/Card'
 
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
-const CardContainerStle = {
-  margin: "25px 0"
-}
-
-const CardHeaderStyle = {
-  float: "left",
-  margin: "-20px 15px 0",
-  padding: "0"
-}
-
-const CardHeaderStatsStyle = {
-  width: "86px",
-  height: "86px",
-  marginTop: "-16px",
-  backgroundColor: "#FC9107"
-}
-
-const DividerStyle = {
-  width: "100%"
-}
-
-const CardTextStyle = {
-  textAlign: "right"
+const data = {
+  cardStats: [
+    {
+      title: "49/50",
+      titleSmall: "GB",
+      color: "#fb8c00",
+      category: "Used Space",
+      stats: "Get More Space...",
+      statsIcon: "warning",
+      icon: "home",
+      id: 1
+    },
+    {
+      title: "$34,245",
+      titleSmall: null,
+      color: "#4fa953",
+      category: "Revenue",
+      stats: "Last 24 Hours",
+      statsIcon: "date_range",
+      icon: "store",
+      id: 2
+    },
+    {
+      title: "75",
+      titleSmall: null,
+      color: "#EA4542",
+      category: "Fixed Issues",
+      stats: "Tracked from Github",
+      statsIcon: "local_offer",
+      icon: "info_outline",
+      id: 3
+    },
+    {
+      title: "+245",
+      titleSmall: null,
+      color: "#03AEC3",
+      category: "Followers",
+      stats: "Just Updated",
+      statsIcon: "update",
+      icon: "people",
+      id: 4
+    }
+  ]
 }
 
 class MainPanel extends Component {
@@ -52,59 +66,13 @@ class MainPanel extends Component {
         <div className="MainPanel__content">
           <Grid fluid>
             <Row>
-              <Col xs={12} sm={6} lg={3}>
-                <Card className="CARD" style={CardContainerStle}>
-                  <CardHeader style={CardHeaderStyle}>
-
-                    <Paper style={CardHeaderStatsStyle}>
-                      <ContentWarning />
-                    </Paper>
-
-                  </CardHeader>
-                  <CardText style={CardTextStyle}>
-                    <p>Used Space</p>
-                    <h3>49/50<small>GB</small></h3>
-
-                  </CardText>
-
-                  <CardActions>
-                    <Divider style={DividerStyle}/>
-                    <FlatButton
-                      href="https://github.com/callemall/material-ui"
-                      target="_blank"
-                      label="Get More Space..."
-                      secondary={true}
-                      hoverColor="none"
-                      icon={<ContentWarning />}
-                    />
-                  </CardActions>
-                </Card>
-              </Col>
-
-              <Col xs={12} sm={6} lg={3}>
-                <Card style={CardContainerStle}>
-                  <div className="CardHeader">
-                    This is card header
-                  </div>
-                </Card>
-              </Col>
-
-              <Col xs={12} sm={6} lg={3}>
-                <Card style={CardContainerStle}>
-                  <CardText>
-                    Hello
-                  </CardText>
-                </Card>
-              </Col>
-
-              <Col xs={12} sm={6} lg={3}>
-                <Card style={CardContainerStle}>
-                  <CardText>
-                    Hello
-                  </CardText>
-                </Card>
-              </Col>
-
+              {
+                data.cardStats.map( item =>
+                  <Col key={item.id} xs={12} sm={6} lg={3}>
+                    <Card title={item.title} titleSmall={item.titleSmall} category={item.category} headerStats={true} headerBck={item.color} icon={item.icon} stats={item.stats} statsIcon={item.statsIcon}/>
+                  </Col>
+                )
+              }
             </Row>
           </Grid>
         </div>

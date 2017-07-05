@@ -10,8 +10,6 @@ import ContentDashboard from 'material-ui/svg-icons/action/dashboard';
 import ContentNotifications from 'material-ui/svg-icons/social/notifications';
 import ContentPerson from 'material-ui/svg-icons/social/person';
 
-import Divider from 'material-ui/Divider';
-
 const ListStyle = {
   padding: 0
 }
